@@ -9,5 +9,3 @@ erl_crash.dump
 /config/*.secret.exs
 .elixir_ls/
 /input/*.txt
-# Built executables
-advent2016/advent2016
