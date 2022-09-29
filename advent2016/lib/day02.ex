@@ -1,6 +1,6 @@
 defmodule Advent2016.Day02 do
   def solve(input) do
-    instr_lines = read_input(input)
+    instr_lines = String.split(input, "\n") |> Enum.map(&String.codepoints/1)
     IO.puts("Part 1:")
     IO.puts(List.to_string(get_code(keypad_1(), instr_lines, {1, 1})))
     IO.puts("Part 2:")
@@ -41,16 +41,11 @@ defmodule Advent2016.Day02 do
 
   defp next_key(instr, keypad, {x, y}) do
     next = case instr do
-      "U" -> {x, y-1}
-      "D" -> {x, y+1}
-      "L" -> {x-1, y}
-      "R" -> {x+1, y}
+      "U" -> { x,   y-1 }
+      "D" -> { x,   y+1 }
+      "L" -> { x-1, y   }
+      "R" -> { x+1, y   }
     end
     if Map.has_key?(keypad, next) do next else {x, y} end
-  end
-
-  defp read_input(input) do
-    String.split(input, "\n")
-      |> Enum.map(&String.codepoints/1)
   end
 end
